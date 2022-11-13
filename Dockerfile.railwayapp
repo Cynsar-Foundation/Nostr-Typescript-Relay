@@ -9,6 +9,12 @@ ARG PGPASSWORD
 
 WORKDIR /build
 
+## Build Setup for Railways
+ENV DB_HOST=$PGHOST
+ENV DB_PORT=$PGPORT
+ENV DB_NAME=$PGDATABASE
+ENV DB_USER=$PGUSER
+ENV DB_PASSWORD=$PGPASSWORD
 
 COPY ["package.json", "package-lock.json","knexfile.js","./"]
 
@@ -37,13 +43,6 @@ LABEL org.opencontainers.image.source=https://github.com/Cameri/nostr-ts-relay
 LABEL org.opencontainers.image.description="nostr-ts-relay"
 LABEL org.opencontainers.image.authors="Ricardo Arturo Cabral Mejía"
 LABEL org.opencontainers.image.licenses=MIT
-
-## Build Setup for Railways
-ENV DB_HOST=$PGHOST
-ENV DB_PORT=$PGPORT
-ENV DB_NAME=$PGDATABASE
-ENV DB_USER=$PGUSER
-ENV DB_PASSWORD=$PGPASSWORD
 
 
 WORKDIR /app
